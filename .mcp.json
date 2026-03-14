@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ticktick": {
+      "type": "stdio",
+      "command": "${HOME}/Documents/Claude/ticktick-mcp/.venv/bin/python3",
+      "args": ["${HOME}/Documents/Claude/ticktick-mcp/server.py"],
+      "env": {
+        "TICKTICK_CLIENT_ID": "YOUR_CLIENT_ID",
+        "TICKTICK_CLIENT_SECRET": "YOUR_CLIENT_SECRET"
+      }
+    }
+  }
+}

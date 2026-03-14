@@ -1,0 +1,24 @@
+{
+  "name": "ticktick-mcp",
+  "version": "0.1.0",
+  "description": "Turn Claude into your personal AI task manager. Create, manage, and complete TickTick tasks just by talking — no app switching required.",
+  "author": {
+    "name": "Salen-Project",
+    "url": "https://github.com/Salen-Project"
+  },
+  "homepage": "https://github.com/Salen-Project/ticktick-mcp",
+  "repository": "https://github.com/Salen-Project/ticktick-mcp",
+  "license": "MIT",
+  "keywords": [
+    "ticktick",
+    "tasks",
+    "productivity",
+    "task-management",
+    "to-do",
+    "reminders",
+    "calendar",
+    "mcp",
+    "oauth"
+  ],
+  "skills": "./skills"
+}
