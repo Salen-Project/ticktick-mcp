@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ticktick-mcp"
+version = "0.1.0"
+description = "MCP server for TickTick — create and manage tasks using Claude via the official TickTick OAuth 2.0 API"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["mcp", "ticktick", "claude", "task-management", "productivity", "model-context-protocol"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Salen-Project/ticktick-mcp"
+Repository = "https://github.com/Salen-Project/ticktick-mcp"
+Issues = "https://github.com/Salen-Project/ticktick-mcp/issues"
+
+[project.scripts]
+ticktick-mcp = "ticktick_mcp.server:main"
+ticktick-mcp-auth = "ticktick_mcp.setup_auth:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ticktick_mcp"]
