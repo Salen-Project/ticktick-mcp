@@ -20,8 +20,9 @@ from mcp.server.fastmcp import FastMCP
 # --- Constants ---
 API_BASE_URL = "https://api.ticktick.com/open/v1"
 TOKEN_URL = "https://ticktick.com/oauth/token"
-CLIENT_ID = os.environ.get("TICKTICK_CLIENT_ID", "aEMU4X1n3Wu0kClew2")
-CLIENT_SECRET = os.environ.get("TICKTICK_CLIENT_SECRET", "ZzDgPS3T7g0N65uAalS7lkwboa3fmg72")
+# Set via environment variables, or replace defaults with your own credentials
+CLIENT_ID = os.environ.get("TICKTICK_CLIENT_ID", "YOUR_CLIENT_ID")
+CLIENT_SECRET = os.environ.get("TICKTICK_CLIENT_SECRET", "YOUR_CLIENT_SECRET")
 TOKENS_FILE = Path.home() / ".ticktick_mcp" / "tokens.json"
 
 PRIORITY_MAP = {0: "None", 1: "Low", 3: "Medium", 5: "High"}

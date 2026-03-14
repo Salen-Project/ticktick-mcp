@@ -20,8 +20,9 @@ from pathlib import Path
 import httpx
 
 # --- Configuration ---
-CLIENT_ID = "aEMU4X1n3Wu0kClew2"
-CLIENT_SECRET = "ZzDgPS3T7g0N65uAalS7lkwboa3fmg72"
+# Get these from https://developer.ticktick.com after registering your app
+CLIENT_ID = "YOUR_CLIENT_ID"
+CLIENT_SECRET = "YOUR_CLIENT_SECRET"
 REDIRECT_URI = "http://localhost:8080/callback"
 AUTH_URL = "https://ticktick.com/oauth/authorize"
 TOKEN_URL = "https://ticktick.com/oauth/token"
@@ -101,15 +102,15 @@ def main():
     print("✅  Authorization received! Exchanging for access tokens...")
 
     # Exchange the authorization code for access + refresh tokens
+    # TickTick requires HTTP Basic Auth with credentials + form body
     try:
         response = httpx.post(
             TOKEN_URL,
-            json={
+            auth=(CLIENT_ID, CLIENT_SECRET),
+            data={
                 "grant_type": "authorization_code",
                 "code": auth_code,
                 "redirect_uri": REDIRECT_URI,
-                "client_id": CLIENT_ID,
-                "client_secret": CLIENT_SECRET,
             },
             timeout=30.0,
         )
