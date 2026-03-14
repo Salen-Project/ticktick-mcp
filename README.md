@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server that connects Claude to your TickTick account, letting you create, list, update, and complete tasks just by talking.
 
+<a href="https://glama.ai/mcp/servers/Salen-Project/ticktick-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/Salen-Project/ticktick-mcp/badge" alt="ticktick-mcp MCP server" />
+</a>
+
 ## What it does
 
 Once connected, you can say things like:
