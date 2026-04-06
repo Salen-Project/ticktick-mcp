@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ticktick-mcp"
-version = "0.1.0"
-description = "MCP server for TickTick — create and manage tasks using Claude via the official TickTick OAuth 2.0 API"
+version = "0.2.0"
+description = "The most complete MCP server for TickTick — 20 tools for task and project management via Claude, using the official TickTick OAuth 2.0 API"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-keywords = ["mcp", "ticktick", "claude", "task-management", "productivity", "model-context-protocol"]
+keywords = ["mcp", "ticktick", "claude", "task-management", "productivity", "model-context-protocol", "dida365", "gtd"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -18,7 +18,9 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries",
+    "Topic :: Office/Business :: Scheduling",
 ]
 dependencies = [
     "mcp[cli]>=1.0.0",

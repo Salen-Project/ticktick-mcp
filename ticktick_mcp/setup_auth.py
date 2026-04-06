@@ -10,6 +10,7 @@ Usage:
 """
 
 import json
+import os
 import time
 import threading
 import webbrowser
@@ -21,8 +22,8 @@ import httpx
 
 # --- Configuration ---
 # Get these from https://developer.ticktick.com after registering your app
-CLIENT_ID = "YOUR_CLIENT_ID"
-CLIENT_SECRET = "YOUR_CLIENT_SECRET"
+CLIENT_ID = os.environ.get("TICKTICK_CLIENT_ID", "YOUR_CLIENT_ID")
+CLIENT_SECRET = os.environ.get("TICKTICK_CLIENT_SECRET", "YOUR_CLIENT_SECRET")
 REDIRECT_URI = "http://localhost:8080/callback"
 AUTH_URL = "https://ticktick.com/oauth/authorize"
 TOKEN_URL = "https://ticktick.com/oauth/token"
