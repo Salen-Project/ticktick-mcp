@@ -3,10 +3,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/Salen-Project/ticktick-mcp/releases)
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://python.org)
-[![Tools](https://img.shields.io/badge/tools-25-orange.svg)](#mcp-tools-reference)
+[![Tools](https://img.shields.io/badge/tools-28-orange.svg)](#mcp-tools-reference)
 [![Glama](https://glama.ai/mcp/servers/Salen-Project/ticktick-mcp/badge)](https://glama.ai/mcp/servers/Salen-Project/ticktick-mcp)
 
-**25 tools. Full CRUD. Smart queries. Multi-condition filters. Batch operations. GTD support. Dida365 compatible.**
+**28 tools. Full CRUD. Smart queries. Multi-condition filters. Batch operations. GTD support. Dida365 compatible.**
 
 Connect Claude to your TickTick account and manage your entire task system through natural conversation -- create tasks, search across projects, check what's overdue, batch-create items, and stay organized without ever opening the app.
 
@@ -18,7 +18,7 @@ Connect Claude to your TickTick account and manage your entire task system throu
 
 | Feature | This Server | TickTick Official MCP | jacepark12 |
 |---|---|---|---|
-| **Tools** | **25** | 17 | ~20 |
+| **Tools** | **28** | 22 | ~20 |
 | **Multi-condition filter** | Yes (priority + tag + date + project) | Yes | No |
 | **Move task between projects** | Yes | Yes | No |
 | **Bulk complete** | Yes (up to 20) | Yes (up to 20) | No |
@@ -138,13 +138,15 @@ TICKTICK_TOKEN_URL=https://dida365.com/oauth/token
 
 ## MCP Tools Reference
 
-### Projects (4 tools)
+### Projects (5 tools)
 
 | Tool | Description |
 |---|---|
 | `ticktick_list_projects` | List all projects with IDs, names, colors |
 | `ticktick_get_project` | Get details of a specific project |
+| `ticktick_get_project_with_tasks` | Get project details + all undone tasks in one call |
 | `ticktick_create_project` | Create a new project (name, color, view mode) |
+| `ticktick_update_project` | Update a project's name, color, or view mode |
 | `ticktick_delete_project` | Permanently delete a project |
 
 ### Tasks -- Basic CRUD (7 tools)
@@ -187,6 +189,12 @@ TICKTICK_TOKEN_URL=https://dida365.com/oauth/token
 |---|---|
 | `ticktick_filter_tasks` | Multi-condition filter: priority + tag + date range + project + status |
 | `ticktick_get_completed_tasks` | View completed tasks in a project |
+
+### User (1 tool)
+
+| Tool | Description |
+|---|---|
+| `ticktick_get_user_preferences` | Get user settings (timezone, week start, etc.) |
 
 ---
 

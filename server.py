@@ -1224,5 +1224,103 @@ async def ticktick_get_completed_tasks(params: CompletedTasksInput) -> str:
         return _handle_error(e)
 
 
+# =====================
+# TOOLS: Parity with Official MCP (3)
+# =====================
+
+@mcp.tool(
+    name="ticktick_update_project",
+    annotations={
+        "title": "Update a TickTick Project",
+        "readOnlyHint": False,
+        "destructiveHint": False,
+        "idempotentHint": True,
+        "openWorldHint": True,
+    },
+)
+async def ticktick_update_project(params: ProjectIdInput, name: Optional[str] = None, color: Optional[str] = None, view_mode: Optional[str] = None) -> str:
+    """Update a project's name, color, or view mode.
+
+    Examples:
+        - "Rename my Work project to 'Work 2026'"
+        - "Change the project color to blue"
+    """
+    try:
+        current = await _make_request("GET", f"project/{params.project_id}")
+        payload: Dict[str, Any] = {
+            "id": params.project_id,
+            "name": name if name else current.get("name"),
+        }
+        if color:
+            payload["color"] = color
+        if view_mode:
+            payload["viewMode"] = view_mode
+
+        project = await _make_request("POST", f"project/{params.project_id}", json=payload)
+        return json.dumps({"success": True, "project": {
+            "id": project.get("id"),
+            "name": project.get("name"),
+            "color": project.get("color"),
+        }}, indent=2)
+    except Exception as e:
+        return _handle_error(e)
+
+
+@mcp.tool(
+    name="ticktick_get_project_with_tasks",
+    annotations={
+        "title": "Get Project with All Undone Tasks",
+        "readOnlyHint": True,
+        "destructiveHint": False,
+        "idempotentHint": True,
+        "openWorldHint": True,
+    },
+)
+async def ticktick_get_project_with_tasks(params: ProjectIdInput) -> str:
+    """Get a project's details together with all its undone tasks in one call.
+
+    Examples:
+        - "Show me my Work project and everything in it"
+    """
+    try:
+        data = await _make_request("GET", f"project/{params.project_id}/data")
+        project_info = data.get("project", {})
+        tasks = [t for t in data.get("tasks", []) if t.get("status") != 2]
+        return json.dumps({
+            "project": {
+                "id": project_info.get("id"),
+                "name": project_info.get("name"),
+                "color": project_info.get("color"),
+            },
+            "task_count": len(tasks),
+            "tasks": [_format_task(t) for t in tasks],
+        }, indent=2)
+    except Exception as e:
+        return _handle_error(e)
+
+
+@mcp.tool(
+    name="ticktick_get_user_preferences",
+    annotations={
+        "title": "Get User Preferences",
+        "readOnlyHint": True,
+        "destructiveHint": False,
+        "idempotentHint": True,
+        "openWorldHint": True,
+    },
+)
+async def ticktick_get_user_preferences() -> str:
+    """Get the current user's TickTick preferences and settings (timezone, week start, etc.).
+
+    Examples:
+        - "What timezone is my TickTick set to?"
+    """
+    try:
+        prefs = await _make_request("GET", "user/preferences")
+        return json.dumps(prefs, indent=2)
+    except Exception as e:
+        return _handle_error(e)
+
+
 if __name__ == "__main__":
     mcp.run()
